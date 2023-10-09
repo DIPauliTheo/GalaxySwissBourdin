@@ -11,7 +11,7 @@ public class VisiteurDao {
 
 	public static Visiteur rechercher(String unMatricule){
 		Visiteur unVisiteur =null;
-		ResultSet req = ConnexionMySql.execReqSelection("select * from visiteur where MATRICULE="+unMatricule);
+		ResultSet req = ConnexionMySql.execReqSelection("select * from visiteur where MATRICULE="+unMatricule+";");
 		try {
 			if (req.next()) {
 				Localite uneLocalite= LocaliteDao.rechercher(req.getString(7));
