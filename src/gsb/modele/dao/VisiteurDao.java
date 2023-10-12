@@ -11,7 +11,7 @@ public class VisiteurDao {
 
 	public static Visiteur rechercher(String unMatricule){
 		Visiteur unVisiteur =null;
-		ResultSet req = ConnexionMySql.execReqSelection("select * from visiteur where MATRICULE="+unMatricule+";");
+		ResultSet req = ConnexionMySql.execReqSelection("select * from visiteur where MATRICULE='"+unMatricule+"';");
 		try {
 			if (req.next()) {
 				Localite uneLocalite= LocaliteDao.rechercher(req.getString(7));
@@ -19,7 +19,7 @@ public class VisiteurDao {
 			};
 			}
 		catch(Exception e) {
-			System.out.println("erreur reqSelection.next() pour la requ�te - select * from visiteur where MATRICULE="+unMatricule+"'");
+			System.out.println("erreur reqSelection.next() pour la requ�te - select * from visiteur where MATRICULE='"+unMatricule+"'");
 			e.printStackTrace();
 			}
 		ConnexionMySql.fermerConnexionBd();
@@ -39,7 +39,7 @@ public class VisiteurDao {
 		Date date = unVisiteur.getDateEntree();
 		String codeUnite = unVisiteur.getCodeUnite();
 		String nomUnite = unVisiteur.getNomUnite();
-		requeteInsertion = "insert into visiteur values('"+matricule+"','"+nom+"','"+prenom+"','"+login+"','"+mdp+"','"+adresse+"','"+codePostale+"','"+date+"','"+codeUnite+"','"+nomUnite+"')";
+		requeteInsertion = "insert into visiteur values('"+matricule+"','"+nom+"','"+prenom+"','"+login+"','"+mdp+"','"+adresse+"','"+codePostale+"','"+date+"','"+codeUnite+"','"+nomUnite+"');";
 		try{
 			result = ConnexionMySql.execReqMaj(requeteInsertion);
 		}
@@ -53,9 +53,11 @@ public class VisiteurDao {
 	public static ArrayList<Visiteur> rechercherTout(){
 		ArrayList<Visiteur> collectionDesVisiteur = new ArrayList<Visiteur>();
 		ResultSet reqSelection = ConnexionMySql.execReqSelection("select MATRICULE from visiteur");
+		
 		try{
 		while (reqSelection.next()) {
 			String matricule = reqSelection.getString(1);
+			
 			collectionDesVisiteur.add(VisiteurDao.rechercher(matricule));
 			}
 		}
