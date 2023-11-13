@@ -1,8 +1,8 @@
 /*
- * Créé le 22 févr. 2015
+ * Crï¿½ï¿½ le 22 fï¿½vr. 2015
  *
- * TODO Pour changer le modèle de ce fichier généré, allez à :
- * Fenêtre - Préférences - Java - Style de code - Modèles de code
+ * TODO Pour changer le modï¿½le de ce fichier gï¿½nï¿½rï¿½, allez ï¿½ :
+ * Fenï¿½tre - Prï¿½fï¿½rences - Java - Style de code - Modï¿½les de code
  */
 package gsb.modele.dao;
 
@@ -18,11 +18,35 @@ import java.util.HashMap;
 
 /**
  * @author Isabelle
- * 22 févr. 2015
- * TODO Pour changer le modèle de ce commentaire de type généré, allez à :
- * Fenêtre - Préférences - Java - Style de code - Modèles de code
+ * 22 fï¿½vr. 2015
+ * TODO Pour changer le modï¿½le de ce commentaire de type gï¿½nï¿½rï¿½, allez ï¿½ :
+ * Fenï¿½tre - Prï¿½fï¿½rences - Java - Style de code - Modï¿½les de code
  */
 public class MedecinDao {
+	
+	
+	public static int creer(Medecin unMedecin) {
+		int result = 0;
+		String requeteInsertion;
+		String code = unMedecin.getCodeMed();
+		String nom = unMedecin.getNom();
+		String prenom = unMedecin.getPrenom();
+		String adresse = unMedecin.getAdresse();
+		String cp = unMedecin.getLaLocalite().getCodePostal();
+		String telephone =unMedecin.getTelephone();
+		String potentiel = unMedecin.getPotentiel();
+		String specialite = unMedecin.getSpecialite();
+		
+		requeteInsertion = "insert into MEDECIN values("+code+","+nom+","+prenom+","+adresse+","+cp+","+telephone+","+potentiel+","+specialite+")";
+		try {
+			result = ConnexionMySql.execReqMaj(requeteInsertion);
+		}
+		catch (Exception e) {
+			System.out.println("echec insertion MEDECIN");
+		}
+		ConnexionMySql.fermerConnexionBd();
+		return result;
+	}
 	
 	public static Medecin rechercher(String codeMedecin){
 		Medecin unMedecin=null;
@@ -35,7 +59,7 @@ public class MedecinDao {
 			};
 			}
 		catch(Exception e) {
-			System.out.println("erreur reqSelection.next() pour la requête - select * from MEDECIN where CODEMED ='"+codeMedecin+"'");
+			System.out.println("erreur reqSelection.next() pour la requï¿½te - select * from MEDECIN where CODEMED ='"+codeMedecin+"'");
 			e.printStackTrace();
 			}
 		ConnexionMySql.fermerConnexionBd();

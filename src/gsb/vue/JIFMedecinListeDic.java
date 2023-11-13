@@ -1,19 +1,15 @@
 /*
- * Créé le 23 févr. 2015
+ * Crï¿½ï¿½ le 23 fï¿½vr. 2015
  *
- * TODO Pour changer le modèle de ce fichier généré, allez à :
- * Fenêtre - Préférences - Java - Style de code - Modèles de code
+ * TODO Pour changer le modï¿½le de ce fichier gï¿½nï¿½rï¿½, allez ï¿½ :
+ * Fenï¿½tre - Prï¿½fï¿½rences - Java - Style de code - Modï¿½les de code
  */
 package gsb.vue;
 
 import gsb.modele.Medecin;
 import gsb.modele.dao.MedecinDao;
-import gsb.service.MedecinService;
 
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -32,10 +28,11 @@ import javax.swing.JTextField;
 import javax.swing.event.ListSelectionListener;
 
 /**
- * @author Isabelle 23 févr. 2015 TODO Pour changer le modèle de ce commentaire
- *         de type généré, allez à : Fenêtre - Préférences - Java - Style de
- *         code - Modèles de code
+ * @author Isabelle 23 fï¿½vr. 2015 TODO Pour changer le modï¿½le de ce commentaire
+ *         de type gï¿½nï¿½rï¿½, allez ï¿½ : Fenï¿½tre - Prï¿½fï¿½rences - Java - Style de
+ *         code - Modï¿½les de code
  */
+@SuppressWarnings("unused")
 public class JIFMedecinListeDic extends JInternalFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
@@ -55,14 +52,14 @@ public class JIFMedecinListeDic extends JInternalFrame implements ActionListener
 	public JIFMedecinListeDic(MenuPrincipal uneFenetreContainer) {
 
 		fenetreContainer = uneFenetreContainer;
-		// récupération des données Medecin dans la collection
+		// rï¿½cupï¿½ration des donnï¿½es Medecin dans la collection
 		//lesMedecins = MedecinDao.retournerCollectionDesMedecins();
 
 		//int nbLignes = lesMedecins.size();
 		diccoMedecin = MedecinDao.retournerDictionnaireDesMedecins();
 		int nbLignes= diccoMedecin.size();
 		
-		p = new JPanel(); // panneau principal de la fenêtre
+		p = new JPanel(); // panneau principal de la fenï¿½tre
 
 		int i=0;
 		String[][] data = new String[nbLignes][4] ;
@@ -86,13 +83,13 @@ public class JIFMedecinListeDic extends JInternalFrame implements ActionListener
 		pSaisie = new JPanel();
 		JTcodeMedecin = new JTextField(20);
 		JTcodeMedecin.setMaximumSize(JTcodeMedecin.getPreferredSize());
-		JBafficherFiche = new JButton("Afficher Fiche médecin");
-		JBafficherFiche.addActionListener(this); // source d'évenement
+		JBafficherFiche = new JButton("Afficher Fiche mÃ©decin");
+		JBafficherFiche.addActionListener(this); // source d'ï¿½venement
 		pSaisie.add(JTcodeMedecin);
 		pSaisie.add(JBafficherFiche);
 		p.add(pSaisie);
 		
-		// mise en forme de la fenêtre
+		// mise en forme de la fenï¿½tre
 		Container contentPane = getContentPane();
 		contentPane.add(p);
 	}

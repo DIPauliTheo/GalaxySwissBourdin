@@ -1,21 +1,16 @@
 /*
- * Créé le 22 mars 2012
+ * Crï¿½ï¿½ le 22 mars 2012
  *
- * TODO Pour changer le modèle de ce fichier généré, allez à :
- * Fenêtre - Préférences - Java - Style de code - Modèles de code
+ * TODO Pour changer le modï¿½le de ce fichier gï¿½nï¿½rï¿½, allez ï¿½ :
+ * Fenï¿½tre - Prï¿½fï¿½rences - Java - Style de code - Modï¿½les de code
  */
 package gsb.vue;
 
 import gsb.modele.Medecin;
 
-import java.awt.Container;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
+import java.awt.*;
 
-import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 public class JIFMedecin extends JInternalFrame  {
 	/**
@@ -49,17 +44,19 @@ public class JIFMedecin extends JInternalFrame  {
     protected JTextField JTspecialite;
 	
     public JIFMedecin() {
-    	p = new JPanel();  // panneau principal de la fenêtre
+    	p = new JPanel();  // panneau principal de la fenï¿½tre
         pBoutons = new JPanel();    // panneau supportant les boutons
+        pBoutons.setBackground(Color.blue);
         pTexte = new JPanel(new GridLayout(9,2));
+        pTexte.setBackground(Color.red);
     	
     	 JLcode = new JLabel("Code");
          JLnom = new JLabel("Nom");
-         JLprenom = new JLabel("Prénom");
+         JLprenom = new JLabel("Prï¿½nom");
          JLadresse = new JLabel("Adresse rue");
          JLcp = new JLabel("Code postal");
          JLville = new JLabel("Ville");
-         JLtelephone = new JLabel("Téléphone");
+         JLtelephone = new JLabel("TÃ©lÃ©phone");
          JLpotentiel = new JLabel("potentiel");
          JLspecialite = new JLabel("ASpecialite");
          
@@ -93,7 +90,7 @@ public class JIFMedecin extends JInternalFrame  {
          pTexte.add(JLspecialite);
          pTexte.add(JTspecialite);
 		
-        // mise en forme de la fenêtre
+        // mise en forme de la fenï¿½tre
 
          p.add(pTexte);
          p.add(pBoutons);
@@ -103,7 +100,7 @@ public class JIFMedecin extends JInternalFrame  {
 	}
     
     public void remplirText(Medecin unMedecin) 	
-    {  // méthode qui permet de remplir les zones de texte à partir des valeurs passées en paramètres
+    {  // mï¿½thode qui permet de remplir les zones de texte ï¿½ partir des valeurs passï¿½es en paramï¿½tres
         JTcode.setText(unMedecin.getCodeMed());        
         JTnom.setText(unMedecin.getNom());
         JTprenom.setText(unMedecin.getPrenom());
@@ -116,7 +113,7 @@ public class JIFMedecin extends JInternalFrame  {
      }
      
       public void viderText() 	
-    {  // méthode qui permet de vider les zones de texte 
+    {  // mï¿½thode qui permet de vider les zones de texte 
         JTcode.setText("");        
         JTnom.setText("");
         JTprenom.setText("");

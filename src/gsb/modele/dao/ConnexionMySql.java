@@ -9,7 +9,7 @@ package gsb.modele.dao;
 import java.sql.*;
 
 /**
- * @author Isabelle
+ * @author Théo
  * 23 sept. 2014
  * Fen�tre - Pr�f�rences - Java - Style de code - Mod�les de code
  */

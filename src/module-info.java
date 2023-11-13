@@ -6,7 +6,6 @@
  */
 module GalaxySwissBourdin {
 	requires java.sql;
-	requires Secolog;
 	requires java.desktop;
-	requires junit;
+	requires org.junit.jupiter.api;
 }

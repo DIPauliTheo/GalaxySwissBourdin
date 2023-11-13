@@ -1,6 +1,6 @@
 package gsb.tests;
 
-import java.security.PublicKey;
+
 import java.util.ArrayList;
 
 import gsb.modele.*;
