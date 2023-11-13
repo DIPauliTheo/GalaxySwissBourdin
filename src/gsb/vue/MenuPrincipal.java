@@ -86,7 +86,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 		JMenuItem mV1 = new JMenuItem("Ajout d'un visiteur");
 		mV1.addActionListener(this);
 		mVisiteur.add(mV1);
-		JMenuItem mV2 = new JMenuItem("Consultation Visiteur");
+		JMenuItem mV2 = new JMenuItem("Liste visiteurs");
 		mV2.addActionListener(this);
 		mVisiteur.add(mV2);
 		
@@ -112,7 +112,8 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 
 			} else if (ChoixOption.equals("Liste Medecins")) {
 				ouvrirFenetre(new JIFMedecinListeDic(this));
-			} else if (ChoixOption.equals("Ajout d'un visiteur")) {
+			} else if (ChoixOption.equals("Liste visiteurs")) {
+				ouvrirFenetre(new JIFVisiteurListeDic(this));
 			}
 
 		}
