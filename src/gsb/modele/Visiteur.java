@@ -1,6 +1,6 @@
 package gsb.modele;
 
-import java.util.*;
+import java.util.Date;
 
 public class Visiteur {
 
@@ -12,7 +12,7 @@ public class Visiteur {
 	protected String adresse;
 	protected Localite uneLocalite;
 	protected String telephone;
-	protected String dateEntree;
+	protected Date dateEntree;
 	protected int prime;
 	protected String codeUnite;
 	protected String nomUnite;
@@ -31,7 +31,7 @@ public class Visiteur {
 	 * @param nomUnite
 	 */
 	public Visiteur(String matricule, String nom, String prenom, String login, String mdp, String adresse,
-			Localite uneLocalite, String telephone, String dateEntree, int prime, String codeUnite, String nomUnite) {
+			Localite uneLocalite, String telephone, Date dateEntree, int prime, String codeUnite, String nomUnite) {
 		this.matricule = matricule;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -144,13 +144,13 @@ public class Visiteur {
 	/**
 	 * @return the dateEntree
 	 */
-	public String getDateEntree() {
+	public Date getDateEntree() {
 		return dateEntree;
 	}
 	/**
 	 * @param dateEntree the dateEntree to set
 	 */
-	public void setDateEntree(String dateEntree) {
+	public void setDateEntree(Date dateEntree) {
 		this.dateEntree = dateEntree;
 	}
 	/**

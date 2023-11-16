@@ -84,7 +84,7 @@ public class JIFVisiteurListeDic extends JInternalFrame implements ActionListene
 		pSaisie = new JPanel();
 		JTmatricule = new JTextField(20);
 		JTmatricule.setMaximumSize(JTmatricule.getPreferredSize());
-		JBafficherFiche = new JButton("Afficher Fiche médecin");
+		JBafficherFiche = new JButton("Afficher Fiche visiteur");
 		JBafficherFiche.addActionListener(this); // source d'�venement
 		pSaisie.add(JTmatricule);
 		pSaisie.add(JBafficherFiche);

@@ -10,14 +10,14 @@ public class MedicamentDao {
 
 	public static Medicament rechercher(String unDepotLegal){
 		Medicament unMedicament =null;
-		ResultSet req = ConnexionMySql.execReqSelection("select * from medicament where DEPOTLEGAL='"+unDepotLegal+"';");
+		ResultSet req = ConnexionMySql.execReqSelection("select * from medicament where MED_DEPOTLEGAL='"+unDepotLegal+"';");
 		try {
 			if (req.next()) {
 				unMedicament = new Medicament(req.getString(1),req.getString(2),req.getString(3),req.getString(4),req.getString(5),req.getDouble(6),req.getString(7),req.getString(8));
 			};
 			}
 		catch(Exception e) {
-			System.out.println("erreur reqSelection.next() pour la requ�te - select * from Medicament where DEPOTLEGAL='"+unDepotLegal+"'");
+			System.out.println("erreur reqSelection.next() pour la requ�te - select * from Medicament where MED_DEPOTLEGAL='"+unDepotLegal+"'");
 			e.printStackTrace();
 			}
 		ConnexionMySql.fermerConnexionBd();
@@ -49,7 +49,7 @@ public class MedicamentDao {
 	
 	public static ArrayList<Medicament> rechercherTout(){
 		ArrayList<Medicament> collectionDesMedicament = new ArrayList<Medicament>();
-		ResultSet reqSelection = ConnexionMySql.execReqSelection("select DEPOTLEGAL from medicament");
+		ResultSet reqSelection = ConnexionMySql.execReqSelection("select MED_DEPOTLEGAL from MEDICAMENT");
 		
 		try{
 		while (reqSelection.next()) {
@@ -67,7 +67,7 @@ public class MedicamentDao {
 	
 	public static ArrayList<Medicament> rechercherCodeFamille(String unCodeFamille){
 		ArrayList<Medicament> collectionDesMedicament = new ArrayList<Medicament>();
-		ResultSet reqSelection = ConnexionMySql.execReqSelection("select DEPOTLEGAL from medicament WHERE CODEFAMILLE ='"+unCodeFamille+"'");
+		ResultSet reqSelection = ConnexionMySql.execReqSelection("select MED_DEPOTLEGAL from MEDICAMENT WHERE FAM_CODE ='"+unCodeFamille+"'");
 		
 		try{
 		while (reqSelection.next()) {

@@ -1,6 +1,8 @@
 package gsb.vue;
 
 import java.awt.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.*;
 
@@ -20,6 +22,8 @@ public class JIFVisiteur extends JInternalFrame {
 	protected JLabel JLmatricule;
 	protected JLabel JLnom;
 	protected JLabel JLprenom;
+	protected JLabel JLlogin;
+	protected JLabel JLmdp;
 	protected JLabel JLadresse;
 	protected JLabel JLcodePostal;
 	protected JLabel JLville;
@@ -31,24 +35,30 @@ public class JIFVisiteur extends JInternalFrame {
 	protected JTextField JTmatricule;
 	protected JTextField JTnom;
 	protected JTextField JTprenom;
+	protected JTextField JTlogin;
+	protected JTextField JTmdp;
 	protected JTextField JTadresse;
 	protected JTextField JTcodePostal;
 	protected JTextField JTville;
 	protected JTextField JTdateEntree;
 	protected JFormattedTextField JTprime;
 	protected JTextField JTcodeUnite;
-	protected JTextField JTnomUnite; 
+	protected JTextField JTnomUnite;
+	
+	protected SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
 	
 	public JIFVisiteur() {
 		p = new JPanel();  // panneau principal de la fen�tre
 		pBoutons = new JPanel();    // panneau supportant les boutons
         pBoutons.setBackground(Color.blue);
-		pTexte = new JPanel(new GridLayout(10,2));
+		pTexte = new JPanel(new GridLayout(12,2));
         pTexte.setBackground(Color.red);
         
         JLmatricule = new JLabel("Matricule");
         JLnom = new JLabel("Nom");
         JLprenom = new JLabel("Prénom");
+        JLlogin = new JLabel("Identitifiant");
+        JLmdp = new JLabel("Mot de Passe");
         JLadresse = new JLabel("Adresse");
         JLcodePostal = new JLabel("Code Postal");
         JLville = new JLabel("Ville");
@@ -61,6 +71,8 @@ public class JIFVisiteur extends JInternalFrame {
         JTmatricule.setMaximumSize(JTmatricule.getPreferredSize());
         JTnom = new JTextField();
         JTprenom = new JTextField();
+        JTlogin = new JTextField();
+        JTmdp = new JTextField();
         JTadresse = new JTextField();
         JTcodePostal = new JTextField();
         JTville = new JTextField();
@@ -75,6 +87,10 @@ public class JIFVisiteur extends JInternalFrame {
         pTexte.add(JTnom);
         pTexte.add(JLprenom);
         pTexte.add(JTprenom);
+        pTexte.add(JLlogin);
+        pTexte.add(JTlogin);
+        pTexte.add(JLmdp);
+        pTexte.add(JTmdp);
         pTexte.add(JLadresse);
         pTexte.add(JTadresse);
         pTexte.add(JLcodePostal);
@@ -96,7 +112,8 @@ public class JIFVisiteur extends JInternalFrame {
         contentPane.add(p);
 	}
         
-        public void remplirText(Visiteur unVisiteur) 	
+        public void remplirText(Visiteur unVisiteur)
+        
         {  // m�thode qui permet de remplir les zones de texte � partir des valeurs pass�es en param�tres
         	JTmatricule.setText(unVisiteur.getMatricule());        
             JTnom.setText(unVisiteur.getNom());
@@ -104,14 +121,15 @@ public class JIFVisiteur extends JInternalFrame {
             JTadresse.setText(unVisiteur.getAdresse());
             JTcodePostal.setText(unVisiteur.getUneLocalite().getCodePostal());
             JTville.setText(unVisiteur.getUneLocalite().getVille());
-            JTdateEntree.setText(unVisiteur.getDateEntree());
+            JTdateEntree.setText(dateFormatter.format(unVisiteur.getDateEntree()));
             JTprime.setValue(unVisiteur.getPrime());
             JTcodeUnite.setText(unVisiteur.getCodeUnite());
             JTnomUnite.setText(unVisiteur.getNomUnite());
          
         }
         
-        public void viderText() {
+
+		public void viderText() {
         	JTmatricule.setText("");        
             JTnom.setText("");
             JTprenom.setText("");

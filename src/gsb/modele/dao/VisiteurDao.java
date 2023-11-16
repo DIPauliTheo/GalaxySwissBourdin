@@ -14,7 +14,7 @@ public class VisiteurDao {
 		try {
 			if (req.next()) {
 				Localite uneLocalite= LocaliteDao.rechercher(req.getString(7));
-				unVisiteur = new Visiteur(req.getString(1),req.getString(2),req.getString(3),req.getString(4),req.getString(5),req.getString(6),uneLocalite,"",req.getString(8),0,req.getString(9),req.getString(10));
+				unVisiteur = new Visiteur(req.getString(1),req.getString(2),req.getString(3),req.getString(4),req.getString(5),req.getString(6),uneLocalite,"",req.getDate(8),0,req.getString(9),req.getString(10));
 			};
 			}
 		catch(Exception e) {
@@ -35,7 +35,7 @@ public class VisiteurDao {
 		String mdp = unVisiteur.getMdp();
 		String adresse = unVisiteur.getAdresse();
 		String codePostale = unVisiteur.getUneLocalite().getCodePostal();
-		String date = unVisiteur.getDateEntree();
+		Date date = unVisiteur.getDateEntree();
 		String codeUnite = unVisiteur.getCodeUnite();
 		String nomUnite = unVisiteur.getNomUnite();
 		requeteInsertion = "insert into visiteur values('"+matricule+"','"+nom+"','"+prenom+"','"+login+"','"+mdp+"','"+adresse+"','"+codePostale+"','"+date+"','"+codeUnite+"','"+nomUnite+"');";
