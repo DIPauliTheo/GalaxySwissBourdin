@@ -24,6 +24,14 @@ import java.util.HashMap;
  */
 public class MedecinDao {
 	
+	public static int supprimer(String codeMed){
+		String requeteSuppression = "delete from MEDECIN where CODEMED='"+codeMed+"'";
+		int result = ConnexionMySql.execReqMaj(requeteSuppression);
+		ConnexionMySql.fermerConnexionBd();
+		return result;
+
+	}
+	
 	
 	public static int creer(Medecin unMedecin) {
 		int result = 0;

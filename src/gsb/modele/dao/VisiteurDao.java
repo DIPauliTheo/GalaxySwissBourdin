@@ -2,8 +2,6 @@ package gsb.modele.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.*;
 
 import gsb.modele.*;
@@ -58,6 +56,7 @@ public class VisiteurDao {
 		
 		try{
 		while (reqSelection.next()) {
+			@SuppressWarnings("unused")
 			String matricule = reqSelection.getString(1);
 			
 				
