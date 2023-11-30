@@ -2,6 +2,8 @@ package gsb.modele.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.*;
 
 import gsb.modele.*;
@@ -33,6 +35,7 @@ public class VisiteurDao {
 		String prenom = unVisiteur.getPrenom();
 		String login = unVisiteur.getLogin();
 		String mdp = unVisiteur.getMdp();
+		
 		String adresse = unVisiteur.getAdresse();
 		String codePostale = unVisiteur.getUneLocalite().getCodePostal();
 		Date date = unVisiteur.getDateEntree();
@@ -57,7 +60,7 @@ public class VisiteurDao {
 		while (reqSelection.next()) {
 			String matricule = reqSelection.getString(1);
 			
-			collectionDesVisiteur.add(VisiteurDao.rechercher(matricule));
+				
 			}
 		}
 		catch (SQLException e) {
@@ -69,7 +72,7 @@ public class VisiteurDao {
 	
 	public static HashMap<String,Visiteur> retournerDictionnaireDesVisiteur(){
 		HashMap<String, Visiteur> diccoDesVisiteurs = new HashMap<String, Visiteur>();
-		ResultSet reqSelection = ConnexionMySql.execReqSelection("select MATRICULE from VISITEUR");
+		ResultSet reqSelection = ConnexionMySql.execReqSelection("select MATRICULE from visiteur");
 		try{
 		while (reqSelection.next()) {
 			String matricule = reqSelection.getString(1);

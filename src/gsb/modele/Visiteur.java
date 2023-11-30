@@ -1,5 +1,6 @@
 package gsb.modele;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Visiteur {
@@ -45,6 +46,7 @@ public class Visiteur {
 		this.codeUnite = codeUnite;
 		this.nomUnite = nomUnite;
 	}
+	
 	/**
 	 * @return the matricule
 	 */

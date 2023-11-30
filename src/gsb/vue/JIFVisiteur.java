@@ -2,7 +2,6 @@ package gsb.vue;
 
 import java.awt.*;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.swing.*;
 
@@ -133,6 +132,8 @@ public class JIFVisiteur extends JInternalFrame {
         	JTmatricule.setText("");        
             JTnom.setText("");
             JTprenom.setText("");
+            JTlogin.setText("");
+            JTmdp.setText("");
             JTadresse.setText("");
             JTcodePostal.setText("");
             JTville.setText("");

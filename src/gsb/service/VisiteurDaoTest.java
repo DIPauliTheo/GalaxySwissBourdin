@@ -2,6 +2,9 @@ package gsb.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,7 +37,8 @@ class VisiteurDaoTest {
 	@Test
 	public final static void testCreerReussi() {
 		Localite uneLocalite = new Localite("cp", "ville");
-		Visiteur unVisiteur = new Visiteur("matricule", "nom", "prenom", "login", "mdp", "adresse", uneLocalite, "telephone", null, 0, "codeUnite", "nomUnite");
+		Date date = new Date();
+		Visiteur unVisiteur = new Visiteur("matricule", "nom", "prenom", "login", "mdp", "adresse", uneLocalite, "telephone", date, 0, "codeUnite", "nomUnite");
 		assertEquals(1, VisiteurDao.creer(unVisiteur));
 	}
 	

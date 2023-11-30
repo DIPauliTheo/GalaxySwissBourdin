@@ -2,8 +2,13 @@ package gsb.vue;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 import gsb.modele.Localite;
 import gsb.modele.Visiteur;
@@ -39,7 +44,17 @@ public class JIFVisiteurAjouter extends JIFVisiteur implements ActionListener {
 	            String adresse = JTadresse.getText();
 	            String codePostal = JTcodePostal.getText();
 	            String ville = JTville.getText();
-	            Date dateEntree = JTdateEntree.getText();
+	            String dateEntreeString = JTdateEntree.getText();
+	            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	            Date dateEntree = null;
+
+	            try {
+	                dateEntree = dateFormat.parse(dateEntreeString);
+	            } catch (ParseException e) {
+	                e.printStackTrace();
+	                // Handle the exception as needed (show an error message, log, etc.)
+	            }
+	            
 	            int prime =0;
 	            if (JTprime.getValue() != null) {
 	                prime = (int) ((Number) JTprime.getValue()).doubleValue();
@@ -48,12 +63,23 @@ public class JIFVisiteurAjouter extends JIFVisiteur implements ActionListener {
 	            String nomUnite = JTnomUnite.getText();
 
 	            // Créez un objet Visiteur avec ces valeurs
-	            Localite uneloc = new Localite(codePostal, ville);
-	            Visiteur visiteur = new Visiteur(matricule, nom, prenom,login,mdp, adresse, uneloc, "", dateEntree, prime, codeUnite, nomUnite);
+	            Localite uneLoc = null;
+	            if (LocaliteDao.rechercher(codePostal) == null) {
+	            	uneLoc = new Localite(codePostal, ville);
+	            }
+	            else {
+	            	uneLoc = LocaliteDao.rechercher(codePostal);
+	            }
+	            Visiteur visiteur = new Visiteur(matricule, nom, prenom,login,mdp, adresse, uneLoc, "", dateEntree, prime, codeUnite, nomUnite);
 
 	            // Appelez la fonction creer de VisiteurDao
-	            VisiteurDao.creer(visiteur);
+	            int result = VisiteurDao.creer(visiteur);
 
+	            if (result != 0) {
+	                JOptionPane.showMessageDialog(this, "Visiteur ajouté avec succès !");
+	            } else {
+	                JOptionPane.showMessageDialog(this, "Échec lors de l'ajout du visiteur");
+	            }
 	            // Videz les champs de texte après l'ajout
 	            viderText();
 			}
