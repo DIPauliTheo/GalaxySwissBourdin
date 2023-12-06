@@ -1,8 +1,8 @@
 /*
- * Créé le 22 févr. 2015
+ * Crï¿½ï¿½ le 22 fï¿½vr. 2015
  *
- * TODO Pour changer le modèle de ce fichier généré, allez à :
- * Fenêtre - Préférences - Java - Style de code - Modèles de code
+ * TODO Pour changer le modï¿½le de ce fichier gï¿½nï¿½rï¿½, allez ï¿½ :
+ * Fenï¿½tre - Prï¿½fï¿½rences - Java - Style de code - Modï¿½les de code
  */
 package gsb.modele.dao;
 
@@ -13,9 +13,9 @@ import java.sql.ResultSet;
 
 /**
  * @author Isabelle
- * 22 févr. 2015
- * TODO Pour changer le modèle de ce commentaire de type généré, allez à :
- * Fenêtre - Préférences - Java - Style de code - Modèles de code
+ * 22 fï¿½vr. 2015
+ * TODO Pour changer le modï¿½le de ce commentaire de type gï¿½nï¿½rï¿½, allez ï¿½ :
+ * Fenï¿½tre - Prï¿½fï¿½rences - Java - Style de code - Modï¿½les de code
  */
 public class LocaliteDao {
 	
@@ -28,11 +28,12 @@ public class LocaliteDao {
 			};
 			}
 		catch(Exception e) {
-			System.out.println("erreur reqSelection.next() pour la requête - select * from LOCALITE where CODEPOSTAL='"+codeLocalite+"'");
+			System.out.println("erreur reqSelection.next() pour la requï¿½te - select * from LOCALITE where CODEPOSTAL='"+codeLocalite+"'");
 			e.printStackTrace();
 			}
 		ConnexionMySql.fermerConnexionBd();
 		return uneLocalite;
+		
 	}
 
 }
