@@ -46,9 +46,7 @@ public class JIFMedecin extends JInternalFrame  {
     public JIFMedecin() {
     	p = new JPanel();  // panneau principal de la fen�tre
         pBoutons = new JPanel();    // panneau supportant les boutons
-        pBoutons.setBackground(Color.blue);
         pTexte = new JPanel(new GridLayout(9,2));
-        pTexte.setBackground(Color.red);
     	
     	 JLcode = new JLabel("Code");
          JLnom = new JLabel("Nom");

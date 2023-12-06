@@ -49,9 +49,7 @@ public class JIFVisiteur extends JInternalFrame {
 	public JIFVisiteur() {
 		p = new JPanel();  // panneau principal de la fen�tre
 		pBoutons = new JPanel();    // panneau supportant les boutons
-        pBoutons.setBackground(Color.blue);
 		pTexte = new JPanel(new GridLayout(12,2));
-        pTexte.setBackground(Color.red);
         
         JLmatricule = new JLabel("Matricule");
         JLnom = new JLabel("Nom");
