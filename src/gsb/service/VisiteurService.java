@@ -5,10 +5,14 @@ import gsb.modele.Visiteur;
 
 public class VisiteurService {
 
+	
+	
+	
 	public static Visiteur rechercherVisiteur(String matricule) {
-        // Ajoutez ici les vérifications sur le matricule, par exemple la validité du format
-        // Exemple : if (!isValidMatricule(matricule)) { throw new IllegalArgumentException("Matricule invalide"); }
-
+		Visiteur unVisiteur = VisiteurDao.rechercher(matricule);
+		if (!isValidMatricule(unVisiteur.getMatricule())) {
+	        throw new IllegalArgumentException("Matricule invalide");
+	    }
         return VisiteurDao.rechercher(matricule);
     }
 	

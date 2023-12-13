@@ -32,7 +32,7 @@ public class MedecinDao {
 		String nom = unMedecin.getNom();
 		String prenom = unMedecin.getPrenom();
 		String adresse = unMedecin.getAdresse();
-		String cp = unMedecin.getLaLocalite().getCodePostal();
+		String cp = unMedecin.getUneLocalite().getCodePostal();
 		String telephone =unMedecin.getTelephone();
 		String potentiel = unMedecin.getPotentiel();
 		String specialite = unMedecin.getSpecialite();

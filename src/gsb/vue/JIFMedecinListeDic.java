@@ -69,7 +69,7 @@ public class JIFMedecinListeDic extends JInternalFrame implements ActionListener
 			data[i][0] = uneEntree.getValue().getCodeMed();
 			data[i][1] = uneEntree.getValue().getNom();
 			data[i][2] = uneEntree.getValue().getPrenom();
-			data[i][3] = uneEntree.getValue().getLaLocalite().getVille() ;
+			data[i][3] = uneEntree.getValue().getUneLocalite().getVille() ;
 			i++;
 			}
 		String[] columnNames = {"Code", "Nom","Prenom","Ville"};
