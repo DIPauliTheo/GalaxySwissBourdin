@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import gsb.modele.Localite;
 import gsb.modele.Visiteur;
 import gsb.modele.dao.*;
+import gsb.service.VisiteurService;
 
 
 public class JIFVisiteurAjouter extends JIFVisiteur implements ActionListener {
@@ -44,7 +45,7 @@ public class JIFVisiteurAjouter extends JIFVisiteur implements ActionListener {
 	            String codePostal = JTcodePostal.getText();
 	            String ville = JTville.getText();
 	            String dateEntreeString = JTdateEntree.getText();
-	            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	            SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
 	            Date dateEntree = null;
 
 	            try {
@@ -53,6 +54,8 @@ public class JIFVisiteurAjouter extends JIFVisiteur implements ActionListener {
 	                e.printStackTrace();
 	                // Handle the exception as needed (show an error message, log, etc.)
 	            }
+	            
+	            java.sql.Date sqlDate = new java.sql.Date(dateEntree.getTime());
 	            
 	            int prime =0;
 	            if (JTprime.getValue() != null) {
@@ -69,10 +72,10 @@ public class JIFVisiteurAjouter extends JIFVisiteur implements ActionListener {
 	            else {
 	            	uneLoc = LocaliteDao.rechercher(codePostal);
 	            }
-	            Visiteur visiteur = new Visiteur(matricule, nom, prenom,login,mdp, adresse, uneLoc, "", dateEntree, prime, codeUnite, nomUnite);
+	            Visiteur visiteur = new Visiteur(matricule, nom, prenom,login,mdp, adresse, uneLoc, "", sqlDate, prime, codeUnite, nomUnite);
 
 	            // Appelez la fonction creer de VisiteurDao
-	            int result = VisiteurDao.creer(visiteur);
+	            int result = VisiteurService.creerVisiteur(visiteur);
 
 	            if (result != 0) {
 	                JOptionPane.showMessageDialog(this, "Visiteur ajouté avec succès !");

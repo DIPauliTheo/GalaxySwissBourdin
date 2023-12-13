@@ -1,4 +1,4 @@
-package gsb.service;
+package gsb.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,13 +11,17 @@ import gsb.modele.dao.*;
 
 class MedecinDaoTest {
 
+	Medecin unMedTest;
 	@BeforeEach
 	void setUp() throws Exception {
-		
-	}
+		 
+		}
 
 	@AfterEach
 	void tearDown() throws Exception {
+		if (MedecinDao.rechercher("test") == unMedTest) {
+            MedecinDao.supprimer("test");
+		}
 	}
 
 	@Test
@@ -32,9 +36,10 @@ class MedecinDaoTest {
 
 	@Test
 	public final static void testCreeReussi(){
-		Localite uneLoc = new Localite("cp", "ville");
-		Medecin unMed = new Medecin("code","nom","prenom","adresse",uneLoc,"telephone","potentiel","specialite");
-		assertEquals(1,MedecinDao.creer(unMed));
+		Localite uneLocTest = new Localite("cp", "ville");
+		Medecin unMedTest = new Medecin("test","nom","prenom","adresse",uneLocTest,"telephone","potentiel","specialite");
+	
+		assertEquals(1,MedecinDao.creer(unMedTest));
 	}
 	
 	public final static void testCreeEchoue() {

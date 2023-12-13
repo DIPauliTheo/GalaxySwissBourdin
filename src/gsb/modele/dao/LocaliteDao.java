@@ -35,5 +35,12 @@ public class LocaliteDao {
 		return uneLocalite;
 		
 	}
+	
+	public static int supprimer(String unCodePostal){
+		String requeteSuppression = "delete from LOCALITE where CODEPOSTAL='"+unCodePostal+"'";
+		int result = ConnexionMySql.execReqMaj(requeteSuppression);
+		ConnexionMySql.fermerConnexionBd();
+		return result;
+	}
 
 }

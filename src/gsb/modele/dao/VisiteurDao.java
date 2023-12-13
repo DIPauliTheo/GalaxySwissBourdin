@@ -25,6 +25,13 @@ public class VisiteurDao {
 		return unVisiteur;
 	}
 	
+	public static int modifier(String unMatricule, Visiteur unVisiteur) {
+		String requeteSuppression = "update visiteur set MATRICULE = '"+ unVisiteur.getMatricule()+"', NOM = '"+ unVisiteur.getNom()+"',PRENOM = '"+ unVisiteur.getPrenom()+"',LOGIN = '"+ unVisiteur.getLogin()+"',MDP = '"+ unVisiteur.getMdp()+"',ADRESSE = '"+ unVisiteur.getAdresse()+"',CODEPOSTAL = '"+ unVisiteur.getUneLocalite().getCodePostal()+"',DATEENTREE = '"+ unVisiteur.getDateEntree()+"',CODEUNIT = '"+ unVisiteur.getCodeUnite()+"',NOMUNIT = '"+ unVisiteur.getNomUnite()+"' where MATRICULE='"+unMatricule+"'";
+		int result = ConnexionMySql.execReqMaj(requeteSuppression);
+		ConnexionMySql.fermerConnexionBd();
+		return result;
+	}
+	
 	public static int creer(Visiteur unVisiteur){
 		int result = 0;
 		String requeteInsertion;
@@ -46,6 +53,13 @@ public class VisiteurDao {
 		catch(Exception e){
 			System.out.println("echec insertion Localite");
 		}
+		ConnexionMySql.fermerConnexionBd();
+		return result;
+	}
+	
+	public static int supprimer(String unMatricule){
+		String requeteSuppression = "delete from VISITEUR where MATRICULE='"+unMatricule+"'";
+		int result = ConnexionMySql.execReqMaj(requeteSuppression);
 		ConnexionMySql.fermerConnexionBd();
 		return result;
 	}

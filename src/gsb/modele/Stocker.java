@@ -5,15 +5,17 @@ public class Stocker {
 	protected int qteStock;
 	public Visiteur unVisiteur;
 	public Medicament unMedicament;
+	protected String codeSto;
 	/**
 	 * @param qteStock
 	 * @param unVisiteur
 	 * @param unMedicament
 	 */
-	public Stocker(int qteStock, Visiteur unVisiteur, Medicament unMedicament) {
+	public Stocker(int qteStock, Visiteur unVisiteur, Medicament unMedicament, String codeSto) {
 		this.qteStock = qteStock;
 		this.unVisiteur = unVisiteur;
 		this.unMedicament = unMedicament;
+		this.codeSto = codeSto;
 	}
 	/**
 	 * @return the qteStock
@@ -50,6 +52,12 @@ public class Stocker {
 	 */
 	public void setUnMedicament(Medicament unMedicament) {
 		this.unMedicament = unMedicament;
+	}
+	public String getCodeSto() {
+		return codeSto;
+	}
+	public void setCodeSto(String codeSto) {
+		this.codeSto = codeSto;
 	}
 	
 	

@@ -5,15 +5,17 @@ public class Offrir {
 	protected Medicament unMedicament;
 	protected Visite uneVisite;
 	protected int qteOfferte;
+	protected String codeOffrir;
 	/**
 	 * @param unMedicament
 	 * @param uneVisite
 	 * @param qteOfferte
 	 */
-	public Offrir(Medicament unMedicament, Visite uneVisite, int qteOfferte) {
+	public Offrir(Medicament unMedicament, Visite uneVisite, int qteOfferte, String codeOffrir) {
 		this.unMedicament = unMedicament;
 		this.uneVisite = uneVisite;
 		this.qteOfferte = qteOfferte;
+		this.codeOffrir = codeOffrir;
 	}
 	/**
 	 * @return the unMedicament
@@ -50,6 +52,12 @@ public class Offrir {
 	 */
 	public void setQteOfferte(int qteOfferte) {
 		this.qteOfferte = qteOfferte;
+	}
+	public String getCodeOffrir() {
+		return codeOffrir;
+	}
+	public void setCodeOffrir(String codeOffrir) {
+		this.codeOffrir = codeOffrir;
 	}
 	
 	

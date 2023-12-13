@@ -82,4 +82,11 @@ public class MedicamentDao {
 		}
 		return collectionDesMedicament;
 	}
+	
+	public static int supprimer(String unDepotLegal){
+		String requeteSuppression = "delete from MEDICAMENT where MED_DEPOTLEGAL='"+unDepotLegal+"'";
+		int result = ConnexionMySql.execReqMaj(requeteSuppression);
+		ConnexionMySql.fermerConnexionBd();
+		return result;
+	}
 }

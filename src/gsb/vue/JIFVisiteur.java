@@ -105,6 +105,7 @@ public class JIFVisiteur extends JInternalFrame {
         
         p.add(pTexte);
         p.add(pBoutons);
+        p.add(pBoutons);
         Container contentPane = getContentPane();
         contentPane.add(p);
 	}
