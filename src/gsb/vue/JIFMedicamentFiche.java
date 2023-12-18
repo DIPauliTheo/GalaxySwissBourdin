@@ -8,6 +8,11 @@ import javax.swing.JOptionPane;
 import gsb.modele.Medicament;
 import gsb.modele.dao.MedicamentDao;
 
+/**
+ * @author Enzo DANIGO
+ * 21 Décembre 2023
+ */
+
 public class JIFMedicamentFiche extends JIFMedicament implements ActionListener {
 
     private static final long serialVersionUID = 1L;

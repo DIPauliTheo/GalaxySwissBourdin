@@ -98,6 +98,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 		setJMenuBar(mbar);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		ouvrirFenetre(new Accueil());
 	}
 

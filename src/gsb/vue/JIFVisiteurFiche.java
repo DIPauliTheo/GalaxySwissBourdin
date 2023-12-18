@@ -1,8 +1,5 @@
 /*
- * Cr�� le 2 mars 2015
- *
- * TODO Pour changer le mod�le de ce fichier g�n�r�, allez � :
- * Fen�tre - Pr�f�rences - Java - Style de code - Mod�les de code
+ * Crée 21 Décembre 2023
  */
 package gsb.vue;
 
@@ -22,10 +19,8 @@ import gsb.modele.dao.LocaliteDao;
 import gsb.service.VisiteurService;
 
 /**
- * @author Isabelle
- * 2 mars 2015
- * TODO Pour changer le mod�le de ce commentaire de type g�n�r�, allez � :
- * Fen�tre - Pr�f�rences - Java - Style de code - Mod�les de code
+ * @author Théo DI PAULI
+ * 21 Décembre 2023
  */
 public class JIFVisiteurFiche extends JIFVisiteur implements ActionListener{
 
