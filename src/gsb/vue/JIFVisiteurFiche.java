@@ -31,6 +31,7 @@ public class JIFVisiteurFiche extends JIFVisiteur implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	private JButton modifier;
+	private JButton supprimer;
 
 	public JIFVisiteurFiche(Visiteur unVisiteur) {
 		super();
@@ -38,8 +39,11 @@ public class JIFVisiteurFiche extends JIFVisiteur implements ActionListener{
 		
 		modifier = new JButton("Modifier");
         pBoutons.add(modifier);
-        
         modifier.addActionListener(this);
+        
+        supprimer = new JButton("Supprimer");
+        pBoutons.add(supprimer);
+        supprimer.addActionListener(this);
 
 	}
 	
@@ -95,6 +99,24 @@ public class JIFVisiteurFiche extends JIFVisiteur implements ActionListener{
             
 			
 		}
+		
+		
+		else if (source == supprimer) {
+            int confirmation = JOptionPane.showConfirmDialog(null, "Êtes-vous sûr de vouloir supprimer ce visiteur ?", "Confirmation de suppression", JOptionPane.YES_NO_OPTION);
+
+            if (confirmation == JOptionPane.YES_OPTION) {
+                String matricule = JTmatricule.getText();
+                int result = VisiteurService.supprimerVisiteur(matricule);
+
+                if (result != 0) {
+                    JOptionPane.showMessageDialog(this, "Visiteur supprimé avec succès !");
+                    // Réinitialiser les champs de texte après la suppression
+                    viderText();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Échec lors de la suppression du Visiteur");
+                }
+            }
+        }
 	}
 	
 

@@ -34,7 +34,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 2591453837113855452L;
 
 	protected JInternalFrame myJInternalFrame;
-	protected JDesktopPane desktopPane;
+	protected static JDesktopPane desktopPane;
 	protected JMenuBar mbar;
 	protected JMenu mMedecins;
 	protected JMenu mMedicaments;
@@ -54,7 +54,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 		contentPane.add(desktopPane, BorderLayout.CENTER);
 
 		setTitle("GSB");
-		setSize(500, 400);
+		setSize(800, 600);
 
 		// Ajout d'une barre de menus � la fen�tre
 		mbar = new JMenuBar();
@@ -98,6 +98,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 		setJMenuBar(mbar);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		ouvrirFenetre(new Accueil());
 	}
 
 	@Override

@@ -1,5 +1,7 @@
 package gsb.vue;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
@@ -23,14 +25,24 @@ public class JIFVisiteurAjouter extends JIFVisiteur implements ActionListener {
 	public JIFVisiteurAjouter(MenuPrincipal uneFenetreContainer){
 		
 		ajouter = new JButton("Ajouter");
-        pBoutons.add(ajouter);
+		customizeButton(ajouter);
         
+		pBoutons.add(ajouter);
         ajouter.addActionListener(this);
         
         
         
 		
 	}
+	
+	private void customizeButton(JButton button) {
+        button.setBackground(Color.decode("#123e6a"));
+        button.setForeground(Color.white);
+        button.setFont(new Font("Arial", Font.PLAIN, 14));
+        button.setFocusPainted(false);
+    }
+
+
 	
 	 public void actionPerformed(ActionEvent evt) { 
 			Object source = evt.getSource();
@@ -53,7 +65,7 @@ public class JIFVisiteurAjouter extends JIFVisiteur implements ActionListener {
 
 	                    // Afficher un message indiquant les éléments importants à remplir
 	                    JOptionPane.showMessageDialog(this, "Veuillez remplir tous les champs obligatoires.",
-	                            "Champs obligatoires manquants", JOptionPane.WARNING_MESSAGE);
+	                            "Champs obligatoires manquants (*)", JOptionPane.WARNING_MESSAGE);
 	                    return; // Ne pas continuer le traitement si des champs sont vides
 	                }
 
@@ -98,10 +110,11 @@ public class JIFVisiteurAjouter extends JIFVisiteur implements ActionListener {
 	            	result = VisiteurService.creerVisiteur(visiteur);
 	            }
 	            else {
+	            	JOptionPane.showMessageDialog(this, "Le matricule du visiteur existe déjà.");
 	            	result = 0;
 	            }
 	            
-	            // Appelez la fonction creer de VisiteurDao
+	            
 	            
 
 	            if (result != 0) {

@@ -45,15 +45,15 @@ public class JIFMedicament extends JInternalFrame  {
         pBoutons = new JPanel();    // panneau supportant les boutons
         pTexte = new JPanel(new GridLayout(9,2));
     	
-    	 JLdepot = new JLabel("Dépot");
+    	 JLdepot = new JLabel("Dépot *");
     	 JLdepot.setMaximumSize(JLdepot.getPreferredSize());
-         JLnom = new JLabel("Nom");
-         JLcomposition = new JLabel("Coposition");
-         JLeffets = new JLabel("Effet");
-         JLcontre = new JLabel("Contre");
-         JLprix = new JLabel("Prix");
-         JLcode = new JLabel("Code");
-         JLlibelle = new JLabel("Libéllé");
+         JLnom = new JLabel("Nom *");
+         JLcomposition = new JLabel("Coposition *");
+         JLeffets = new JLabel("Effet *");
+         JLcontre = new JLabel("Contre Indications *");
+         JLprix = new JLabel("Prix *");
+         JLcode = new JLabel("Code Famille *");
+         JLlibelle = new JLabel("Libéllé Famille *");
          
          
          JTdepot = new JTextField(20);

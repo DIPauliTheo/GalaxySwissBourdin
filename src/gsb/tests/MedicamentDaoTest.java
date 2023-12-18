@@ -29,7 +29,7 @@ class MedicamentDaoTest {
 
 	@Test
 	public final static void testRechercherReussi() {
-		assertNotNull(MedicamentDao.rechercher("vent001"));
+		assertNotNull(MedicamentDao.rechercher("TXISOL22"));
 	}
 	
 	@Test

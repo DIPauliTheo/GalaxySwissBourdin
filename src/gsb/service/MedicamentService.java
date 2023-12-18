@@ -1,5 +1,7 @@
 package gsb.service;
 
+import javax.swing.JOptionPane;
+
 import gsb.modele.Medicament;
 import gsb.modele.dao.MedicamentDao;
 
@@ -15,8 +17,8 @@ public class MedicamentService {
 	
 	public static Medicament rechercherMedicament(String depotLegal) {
 		Medicament unMedicament = MedicamentDao.rechercher(depotLegal);
-		if (!isValidDepotLegal(unMedicament.getDepotLegal())) {
-	        throw new IllegalArgumentException("Matricule invalide");
+		if (unMedicament == null || !isValidDepotLegal(unMedicament.getDepotLegal())) {
+	        return null;
 	    }
         return MedicamentDao.rechercher(depotLegal);
     }
@@ -32,8 +34,14 @@ public class MedicamentService {
 	public static int creerMedicament(Medicament medicament) {
         
 		if (!isValidDepotLegal(medicament.getDepotLegal())) {
-	        throw new IllegalArgumentException("Matricule invalide");
-	    }
+		    JOptionPane.showMessageDialog(null, "Le dépôt légal du médicament n'est pas valide. le dépôt légal doit être composé de cinq à sept lettres majuscules suivies de 0 à 3 chiffres.");
+		    return 0;
+		}
+		if (!isValidCodeFam(medicament.getCodeFamille())) {
+			JOptionPane.showMessageDialog(null, "Le code famille du médicament n'est pas valide. le dépôt légal doit être composé de trois lettres majuscules.");
+		    return 0;
+		}
+
 	    
         return MedicamentDao.creer(medicament);
     }
@@ -47,7 +55,12 @@ public class MedicamentService {
 	 */
 	
 	private static boolean isValidDepotLegal(String depotLegal) {
-	    String depotLegalPattern = "[A-Z]{3}\\d{1,7}";
+	    String depotLegalPattern = "[A-Z]{5,7}\\d{0,3}";
 	    return depotLegal.matches(depotLegalPattern);
+	}
+	
+	private static boolean isValidCodeFam(String codeFam) {
+		String codeFamPattern = "[A-Z]{3}";
+		return codeFam.matches(codeFamPattern);
 	}
 }

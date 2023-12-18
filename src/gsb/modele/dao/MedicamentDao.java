@@ -51,20 +51,6 @@ public class MedicamentDao {
 	    String codeFamille = unMedicament.getCodeFamille();
 	    String libelleFamille = unMedicament.getLibellefamille();
 	    
-	    // Vérification si le dépôt légal existe déjà
-	    String requeteVerification = "SELECT COUNT(*) FROM medicament WHERE MED_DEPOTLEGAL = '" + depotLegal + "';";
-	    int count = 0;
-	    try {
-	        count = ConnexionMySql.execReqMaj(requeteVerification);
-	    } catch(Exception e) {
-	        System.out.println("Erreur lors de la vérification du dépôt légal");
-	    }
-	    
-	    if (count > 0) {
-	        System.out.println("Le dépôt légal existe déjà. Impossible d'insérer le médicament.");
-	        return result; // Retourner 0 ou une valeur indiquant l'échec de l'insertion
-	    }
-	    
 	    requeteInsertion = "insert into medicament values('"+depotLegal+"','"+nomCommercial+"','"+composition+"','"+effets+"','"+contreIndication+"','"+prixEchantillon+"','"+codeFamille+"','"+libelleFamille+"');";
 	    try {
 	        result = ConnexionMySql.execReqMaj(requeteInsertion);

@@ -5,6 +5,8 @@ import gsb.modele.dao.VisiteurDao;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.swing.JOptionPane;
+
 import gsb.modele.Visiteur;
 
 public class VisiteurService {
@@ -17,6 +19,10 @@ public class VisiteurService {
 	 * @return Une instance de la classe Visiteur correspondant au visiteur trouvé.
 	 * @throws IllegalArgumentException Si le matricule du visiteur est invalide.
 	 */
+	
+	public static int supprimerVisiteur(String matricule) {
+		return VisiteurDao.supprimer(matricule);
+	}
 	
 	public static Visiteur rechercherVisiteur(String matricule) {
 		Visiteur unVisiteur = VisiteurDao.rechercher(matricule);
@@ -38,15 +44,27 @@ public class VisiteurService {
 		
 
 		    // Effectuer les validations restantes
-		if (!isValidMatricule(visiteur.getMatricule()) ||
-		    !isValidCp(visiteur.getUneLocalite().getCodePostal()) ||
-		    !isValidCodeUnit(visiteur.getCodeUnite()) ||
-	        !isValidDateFormat(visiteur.getDateEntree())) {
-
-	        return 0; // Indiquer un échec dans la création du visiteur
+		if (!isValidMatricule(visiteur.getMatricule())) {
+			JOptionPane.showMessageDialog(null, "Le Matricule du visiteur n'est pas valide. le Matricule doit être composé d'une lettre minuscule suivies de 2 à 3 chiffres.");
+			return 0;
 		}
+		if (!isValidCp(visiteur.getUneLocalite().getCodePostal())) {
+			JOptionPane.showMessageDialog(null, "Le code postal du visiteur n'est pas valide. le code postal doit être composé de 5 chiffres.");
+			return 0;
+		}
+		if (!isValidCodeUnit(visiteur.getCodeUnite())){
+			JOptionPane.showMessageDialog(null, "Le code unité du visiteur n'est pas valide. le code unité doit être composé de 2 lettres majuscules.");
+			return 0;
+		}
+		if(!isValidDateFormat(visiteur.getDateEntree())){
+			JOptionPane.showMessageDialog(null, "La date du visiteur n'est pas valide. la date doit être du format (yyyy-MM-dd).");
+			return 0;
+		}
+		
+		return VisiteurDao.creer(visiteur);
+		
 
-        return VisiteurDao.creer(visiteur);
+        
     }
 	
 	/**
@@ -58,11 +76,22 @@ public class VisiteurService {
 	 */
 	
 	public static int modifierVisiteur(String matricule, Visiteur visiteur) {
-	    if (!isValidMatricule(visiteur.getMatricule()) || 
-	        !isValidCp(visiteur.getUneLocalite().getCodePostal()) || 
-	        !isValidCodeUnit(visiteur.getCodeUnite())) {
-	        return 0;
-	    }
+		if (!isValidMatricule(visiteur.getMatricule())) {
+			JOptionPane.showMessageDialog(null, "Le Matricule du visiteur n'est pas valide. le Matricule doit être composé d'une lettre minuscule suivies de 2 à 3 chiffres.");
+			return 0;
+		}
+		if (!isValidCp(visiteur.getUneLocalite().getCodePostal())) {
+			JOptionPane.showMessageDialog(null, "Le code postal du visiteur n'est pas valide. le code postal doit être composé de 5 chiffres.");
+			return 0;
+		}
+		if (!isValidCodeUnit(visiteur.getCodeUnite())){
+			JOptionPane.showMessageDialog(null, "Le code unité du visiteur n'est pas valide. le code unité doit être composé de 2 lettres majuscules.");
+			return 0;
+		}
+		if(!isValidDateFormat(visiteur.getDateEntree())){
+			JOptionPane.showMessageDialog(null, "La date du visiteur n'est pas valide. la date doit être du format (yyyy-MM-dd).");
+			return 0;
+		}
 	    
 	    return VisiteurDao.modifier(matricule, visiteur);
 	}

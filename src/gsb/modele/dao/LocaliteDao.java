@@ -7,10 +7,8 @@
 package gsb.modele.dao;
 
 import gsb.modele.Localite;
-import gsb.modele.Visiteur;
 
 import java.sql.ResultSet;
-import java.util.Date;
 
 
 /**
