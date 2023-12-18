@@ -45,14 +45,29 @@ public class JIFVisiteurAjouter extends JIFVisiteur implements ActionListener {
 	            String codePostal = JTcodePostal.getText();
 	            String ville = JTville.getText();
 	            String dateEntreeString = JTdateEntree.getText();
-	            SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
+	            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	            Date dateEntree = null;
+	            
+	            if (matricule.isEmpty() || login.isEmpty() ||
+	                    mdp.isEmpty() || codePostal.isEmpty() || ville.isEmpty()) {
 
-	            try {
-	                dateEntree = dateFormat.parse(dateEntreeString);
-	            } catch (ParseException e) {
-	                e.printStackTrace();
-	                // Handle the exception as needed (show an error message, log, etc.)
+	                    // Afficher un message indiquant les éléments importants à remplir
+	                    JOptionPane.showMessageDialog(this, "Veuillez remplir tous les champs obligatoires.",
+	                            "Champs obligatoires manquants", JOptionPane.WARNING_MESSAGE);
+	                    return; // Ne pas continuer le traitement si des champs sont vides
+	                }
+
+	            
+	            if (!dateEntreeString.isEmpty()) {
+	                try {
+	                    dateEntree = dateFormat.parse(dateEntreeString);
+	                } catch (ParseException e) {
+	                    e.printStackTrace();
+	                    // Handle the exception as needed (show an error message, log, etc.)
+	                }
+	            } else {
+	                // Si la date d'entrée est vide, attribuez une date par défaut
+	                dateEntree = new Date(); // Vous pouvez remplacer cela par la date par défaut souhaitée
 	            }
 	            
 	            java.sql.Date sqlDate = new java.sql.Date(dateEntree.getTime());
@@ -68,22 +83,36 @@ public class JIFVisiteurAjouter extends JIFVisiteur implements ActionListener {
 	            Localite uneLoc = null;
 	            if (LocaliteDao.rechercher(codePostal) == null) {
 	            	uneLoc = new Localite(codePostal, ville);
+	            	LocaliteDao.creer(uneLoc);
 	            }
 	            else {
 	            	uneLoc = LocaliteDao.rechercher(codePostal);
 	            }
+	            
+	            
 	            Visiteur visiteur = new Visiteur(matricule, nom, prenom,login,mdp, adresse, uneLoc, "", sqlDate, prime, codeUnite, nomUnite);
 
+	            int result;
+	            
+	            if ((VisiteurService.rechercherVisiteur(visiteur.getMatricule()) == null)) {
+	            	result = VisiteurService.creerVisiteur(visiteur);
+	            }
+	            else {
+	            	result = 0;
+	            }
+	            
 	            // Appelez la fonction creer de VisiteurDao
-	            int result = VisiteurService.creerVisiteur(visiteur);
+	            
 
 	            if (result != 0) {
 	                JOptionPane.showMessageDialog(this, "Visiteur ajouté avec succès !");
+	                viderText();
 	            } else {
 	                JOptionPane.showMessageDialog(this, "Échec lors de l'ajout du visiteur");
+	                
 	            }
 	            // Videz les champs de texte après l'ajout
-	            viderText();
+	            
 			}
 	 }
 }

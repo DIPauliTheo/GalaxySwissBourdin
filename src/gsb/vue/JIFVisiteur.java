@@ -14,9 +14,13 @@ public class JIFVisiteur extends JInternalFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	// Panneaux de la fenêtre
+	
 	protected JPanel p;  
 	protected JPanel pTexte;
 	protected JPanel pBoutons;
+	
+	// Labels pour les champs de saisie
 	
 	protected JLabel JLmatricule;
 	protected JLabel JLnom;
@@ -31,6 +35,9 @@ public class JIFVisiteur extends JInternalFrame {
 	protected JLabel JLcodeUnite;
 	protected JLabel JLnomUnite;
 	
+	
+	// Champs de saisie
+	
 	protected JTextField JTmatricule;
 	protected JTextField JTnom;
 	protected JTextField JTprenom;
@@ -44,25 +51,33 @@ public class JIFVisiteur extends JInternalFrame {
 	protected JTextField JTcodeUnite;
 	protected JTextField JTnomUnite;
 	
+	// Format de date pour afficher la date d'entrée
+	
 	protected SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+	
+	// Constructeur de la fenêtre interne
 	
 	public JIFVisiteur() {
 		p = new JPanel();  // panneau principal de la fen�tre
 		pBoutons = new JPanel();    // panneau supportant les boutons
 		pTexte = new JPanel(new GridLayout(12,2));
         
-        JLmatricule = new JLabel("Matricule");
+		// Initialisation des labels
+		
+        JLmatricule = new JLabel("Matricule*");
         JLnom = new JLabel("Nom");
         JLprenom = new JLabel("Prénom");
-        JLlogin = new JLabel("Identitifiant");
-        JLmdp = new JLabel("Mot de Passe");
+        JLlogin = new JLabel("Identitifiant*");
+        JLmdp = new JLabel("Mot de Passe*");
         JLadresse = new JLabel("Adresse");
-        JLcodePostal = new JLabel("Code Postal");
-        JLville = new JLabel("Ville");
-        JLdateEntree = new JLabel("Date d'entrée");
+        JLcodePostal = new JLabel("Code Postal*");
+        JLville = new JLabel("Ville*");
+        JLdateEntree = new JLabel("Date d'entrée (yyyy-MM-dd)");
         JLprime = new JLabel("prime");
-        JLcodeUnite = new JLabel("Code Unité");
-        JLnomUnite = new JLabel("Nom Unité");
+        JLcodeUnite = new JLabel("Code Unité*");
+        JLnomUnite = new JLabel("Nom Unité*");
+        
+     // Initialisation des champs de saisie
         
         JTmatricule = new JTextField(20);
         JTmatricule.setMaximumSize(JTmatricule.getPreferredSize());
@@ -77,6 +92,9 @@ public class JIFVisiteur extends JInternalFrame {
         JTprime = new JFormattedTextField();
         JTcodeUnite = new JTextField();
         JTnomUnite = new JTextField();
+        
+        
+     // Ajout des labels et champs de saisie au panneau texte
         
         pTexte.add(JLmatricule);
         pTexte.add(JTmatricule);
@@ -103,20 +121,26 @@ public class JIFVisiteur extends JInternalFrame {
         pTexte.add(JLnomUnite);
         pTexte.add(JTnomUnite);
         
+     // Ajout des panneaux au panneau principal
+        
         p.add(pTexte);
         p.add(pBoutons);
         p.add(pBoutons);
+        
+     // Ajout du panneau principal au contenu de la fenêtre interne
         Container contentPane = getContentPane();
         contentPane.add(p);
 	}
         
         public void remplirText(Visiteur unVisiteur)
         
-        {  // m�thode qui permet de remplir les zones de texte � partir des valeurs pass�es en param�tres
+        {  // Méthode pour remplir les champs de saisie avec les données d'un visiteur
         	JTmatricule.setText(unVisiteur.getMatricule());        
             JTnom.setText(unVisiteur.getNom());
             JTprenom.setText(unVisiteur.getPrenom());
             JTadresse.setText(unVisiteur.getAdresse());
+            JTlogin.setText(unVisiteur.getLogin());
+            JTmdp.setText(unVisiteur.getMdp());
             JTcodePostal.setText(unVisiteur.getUneLocalite().getCodePostal());
             JTville.setText(unVisiteur.getUneLocalite().getVille());
             JTdateEntree.setText(dateFormatter.format(unVisiteur.getDateEntree()));
@@ -127,7 +151,7 @@ public class JIFVisiteur extends JInternalFrame {
         }
         
 
-		public void viderText() {
+		public void viderText() { // Méthode pour vider les champs de saisie
         	JTmatricule.setText("");        
             JTnom.setText("");
             JTprenom.setText("");

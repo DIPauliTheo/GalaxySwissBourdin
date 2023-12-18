@@ -7,6 +7,14 @@ import gsb.modele.Offrir;
 import gsb.modele.Visite;
 
 public class OffrirDao {
+	
+	/**
+	 * Recherche une offre d'échantillon dans la base de données par son codeOffrir.
+	 * 
+	 * @param CodeOffrir Le code de l'offre d'échantillon à rechercher.
+	 * @return Une instance de la classe Offrir correspondant à l'offre trouvée, ou null si non trouvée.
+	 */
+	
 	public static Offrir rechercher(String CodeOffrir){
 		Offrir uneOffre =null;
 		Medicament unMedicament = null;

@@ -46,6 +46,7 @@ public class JIFMedicament extends JInternalFrame  {
         pTexte = new JPanel(new GridLayout(9,2));
     	
     	 JLdepot = new JLabel("Dépot");
+    	 JLdepot.setMaximumSize(JLdepot.getPreferredSize());
          JLnom = new JLabel("Nom");
          JLcomposition = new JLabel("Coposition");
          JLeffets = new JLabel("Effet");
@@ -56,14 +57,13 @@ public class JIFMedicament extends JInternalFrame  {
          
          
          JTdepot = new JTextField(20);
-         JTdepot.setMaximumSize(JTdepot.getPreferredSize());
-         JTnom = new JTextField();
-         JTcomposition = new JTextField();
-         JTeffets = new JTextField();    
-         JTcontre = new JTextField();
-         JTprix = new JTextField();
-         JTcode = new JTextField();
-         JTlibelle = new JTextField();
+         JTnom = new JTextField(20);
+         JTcomposition = new JTextField(20);
+         JTeffets = new JTextField(20);    
+         JTcontre = new JTextField(20);
+         JTprix = new JTextField(20);
+         JTcode = new JTextField(20);
+         JTlibelle = new JTextField(20);
          
          pTexte.add(JLdepot);
          pTexte.add(JTdepot);

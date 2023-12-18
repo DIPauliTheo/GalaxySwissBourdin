@@ -7,6 +7,14 @@ import gsb.modele.Visite;
 import gsb.modele.Visiteur;
 
 public class VisiteDao {
+	
+	/**
+	 * Recherche une visite dans la base de données par sa référence.
+	 * 
+	 * @param Reference La référence de la visite à rechercher.
+	 * @return Une instance de la classe Visite correspondant à la visite trouvée, ou null si non trouvée.
+	 */
+	
 	public static Visite rechercher(String Reference){
 		Visite uneVisite =null;
 		Medecin unMedecin = null;

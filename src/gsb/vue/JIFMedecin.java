@@ -1,9 +1,4 @@
-/*
- * Cr�� le 22 mars 2012
- *
- * TODO Pour changer le mod�le de ce fichier g�n�r�, allez � :
- * Fen�tre - Pr�f�rences - Java - Style de code - Mod�les de code
- */
+
 package gsb.vue;
 
 import gsb.modele.Medecin;
@@ -103,8 +98,8 @@ public class JIFMedecin extends JInternalFrame  {
         JTnom.setText(unMedecin.getNom());
         JTprenom.setText(unMedecin.getPrenom());
         JTadresse.setText(unMedecin.getAdresse());    
-        JTcp.setText(unMedecin.getUneLocalite().getCodePostal());
-        JTville.setText(unMedecin.getUneLocalite().getVille());
+        JTcp.setText(unMedecin.getLaLocalite().getCodePostal());
+        JTville.setText(unMedecin.getLaLocalite().getVille());
         JTtelephone.setText(unMedecin.getTelephone());
         JTpotentiel.setText(unMedecin.getPotentiel());
         JTspecialite.setText(unMedecin.getSpecialite());

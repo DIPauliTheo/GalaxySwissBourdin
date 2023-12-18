@@ -1,16 +1,16 @@
 /*
- * Crï¿½ï¿½ le 22 fï¿½vr. 2015
+ * Créé le 22 févr. 2015
  *
- * TODO Pour changer le modï¿½le de ce fichier gï¿½nï¿½rï¿½, allez ï¿½ :
- * Fenï¿½tre - Prï¿½fï¿½rences - Java - Style de code - Modï¿½les de code
+ * TODO Pour changer le modèle de ce fichier généré, allez à :
+ * Fenêtre - Préférences - Java - Style de code - Modèles de code
  */
 package gsb.modele;
 
 /**
  * @author Isabelle
- * 22 fï¿½vr. 2015
- * TODO Pour changer le modï¿½le de ce commentaire de type gï¿½nï¿½rï¿½, allez ï¿½ :
- * Fenï¿½tre - Prï¿½fï¿½rences - Java - Style de code - Modï¿½les de code
+ * 22 févr. 2015
+ * TODO Pour changer le modèle de ce commentaire de type généré, allez à :
+ * Fenêtre - Préférences - Java - Style de code - Modèles de code
  */
 public class Medecin {
 	protected String codeMed ;
@@ -50,7 +50,7 @@ public class Medecin {
 		return codeMed;
 	}
 	/**
-	 * @param codeMed codeMed ï¿½ dï¿½finir.
+	 * @param codeMed codeMed à définir.
 	 */
 	public void setCodeMed(String codeMed) {
 		this.codeMed = codeMed;
@@ -62,7 +62,7 @@ public class Medecin {
 		return nom;
 	}
 	/**
-	 * @param nom nom ï¿½ dï¿½finir.
+	 * @param nom nom à définir.
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
@@ -74,7 +74,7 @@ public class Medecin {
 		return prenom;
 	}
 	/**
-	 * @param prenom prenom ï¿½ dï¿½finir.
+	 * @param prenom prenom à définir.
 	 */
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
@@ -86,7 +86,7 @@ public class Medecin {
 		return adresse;
 	}
 	/**
-	 * @param adresse adresse ï¿½ dï¿½finir.
+	 * @param adresse adresse à définir.
 	 */
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
@@ -94,13 +94,13 @@ public class Medecin {
 	/**
 	 * @return Renvoie laLocalite.
 	 */
-	public Localite getUneLocalite() {
+	public Localite getLaLocalite() {
 		return laLocalite;
 	}
 	/**
-	 * @param laLocalite laLocalite ï¿½ dï¿½finir.
+	 * @param laLocalite laLocalite à définir.
 	 */
-	public void setUneLocalite(Localite laLocalite) {
+	public void setLaLocalite(Localite laLocalite) {
 		this.laLocalite = laLocalite;
 	}
 	/**
@@ -110,7 +110,7 @@ public class Medecin {
 		return telephone;
 	}
 	/**
-	 * @param telephone telephone ï¿½ dï¿½finir.
+	 * @param telephone telephone à définir.
 	 */
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
@@ -122,7 +122,7 @@ public class Medecin {
 		return potentiel;
 	}
 	/**
-	 * @param potentiel potentiel ï¿½ dï¿½finir.
+	 * @param potentiel potentiel à définir.
 	 */
 	public void setPotentiel(String potentiel) {
 		this.potentiel = potentiel;
@@ -134,7 +134,7 @@ public class Medecin {
 		return specialite;
 	}
 	/**
-	 * @param specialite specialite ï¿½ dï¿½finir.
+	 * @param specialite specialite à définir.
 	 */
 	public void setSpecialite(String specialite) {
 		this.specialite = specialite;

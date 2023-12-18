@@ -1,20 +1,10 @@
-/*
-@ * Cr�� le 3 mars 2015
- *
- * TODO Pour changer le mod�le de ce fichier g�n�r�, allez � :
- * Fen�tre - Pr�f�rences - Java - Style de code - Mod�les de code
- */
 package gsb.vue;
-
-import gsb.modele.Medecin;
-import gsb.modele.dao.MedecinDao;
 
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
@@ -23,33 +13,30 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-/**
- * @author Isabelle
- * 3 mars 2015
- * TODO Pour changer le mod�le de ce commentaire de type g�n�r�, allez � :
- * Fen�tre - Pr�f�rences - Java - Style de code - Mod�les de code
- */
-public class JIFMedecinListeCol extends JInternalFrame implements ActionListener {
+import gsb.modele.Medicament;
+import gsb.modele.dao.MedicamentDao;
+
+public class JIFMedicamentListeCol extends JInternalFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
-	private ArrayList<Medecin> lesMedecins;
+	private ArrayList<Medicament> lesMeicaments;
 
 
 	protected JPanel p;
 	protected JScrollPane scrollPane;
 	protected JPanel pSaisie;
-	protected JTextField JTcodeMedecin;
+	protected JTextField JTcodeMedicament;
 	protected JButton JBafficherFiche;
 	protected MenuPrincipal fenetreContainer;
 
-	public JIFMedecinListeCol(MenuPrincipal uneFenetreContainer) {
+	public JIFMedicamentListeCol(MenuPrincipal uneFenetreContainer) {
 
 		fenetreContainer = uneFenetreContainer;
 		// r�cup�ration des donn�es Medecin dans la collection
-		lesMedecins = MedecinDao.retournerCollectionDesMedecins();
+		lesMeicaments = MedicamentDao.rechercherTout();
 
-		int nbLignes = lesMedecins.size();
+		int nbLignes = lesMeicaments.size();
 
 		JTable table;
 		
@@ -59,14 +46,14 @@ public class JIFMedecinListeCol extends JInternalFrame implements ActionListener
 
 		int i=0;
 		String[][] data = new String[nbLignes][4] ;
-		for(Medecin unMedecin : lesMedecins){
-			data[i][0] = unMedecin.getCodeMed();
-			data[i][1] = unMedecin.getNom();
-			data[i][2] = unMedecin.getPrenom();
-			data[i][3] = unMedecin.getLaLocalite().getVille() ;
+		for(Medicament unMedicament : lesMeicaments){
+			data[i][0] = unMedicament.getDepotLegal();
+			data[i][1] = unMedicament.getNomCommercial();
+			data[i][2] = unMedicament.getComposition();
+			data[i][3] = unMedicament.getEffets();
 			i++;
 			}
-		String[] columnNames = {"Code", "Nom","Prenom","Ville"};
+		String[] columnNames = {"Dépot Légal", "Nom","Composition","Effets"};
 		table = new JTable(data, columnNames);
 		
 		scrollPane = new JScrollPane(table);
@@ -74,11 +61,11 @@ public class JIFMedecinListeCol extends JInternalFrame implements ActionListener
 		p.add(scrollPane);
 		
 		pSaisie = new JPanel();
-		JTcodeMedecin = new JTextField(20);
-		JTcodeMedecin.setMaximumSize(JTcodeMedecin.getPreferredSize());
-		JBafficherFiche = new JButton("Afficher Fiche médecin");
+		JTcodeMedicament = new JTextField(20);
+		JTcodeMedicament.setMaximumSize(JTcodeMedicament.getPreferredSize());
+		JBafficherFiche = new JButton("Afficher Fiche médicament");
 		JBafficherFiche.addActionListener(this);
-		pSaisie.add(JTcodeMedecin);
+		pSaisie.add(JTcodeMedicament);
 		pSaisie.add(JBafficherFiche);
 		p.add(pSaisie);
 		
@@ -94,10 +81,11 @@ public class JIFMedecinListeCol extends JInternalFrame implements ActionListener
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
    		if (source == JBafficherFiche){
-   			Medecin unMedecin = MedecinDao.rechercher(JTcodeMedecin.getText());
-   			if (unMedecin!=null){
-   	   			fenetreContainer.ouvrirFenetre(new JIFMedecinFiche(unMedecin));
+   			Medicament unMedicament = MedicamentDao.rechercher(JTcodeMedicament.getText());
+   			if (unMedicament!=null){
+   	   			fenetreContainer.ouvrirFenetre(new JIFMedicamentFiche(unMedicament));
    			}
    		}	
 	}
 }
+

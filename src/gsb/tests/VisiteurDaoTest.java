@@ -50,9 +50,6 @@ class VisiteurDaoTest {
 	public final static void testCreerEchoue() {
 		assertEquals(0, VisiteurDao.creer(VisiteurDao.rechercher("a17")));
 	}
-	
-	
 
-	
 
 }

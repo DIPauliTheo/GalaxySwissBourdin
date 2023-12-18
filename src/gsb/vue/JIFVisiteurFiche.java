@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 import gsb.modele.Localite;
 import gsb.modele.Visiteur;
 import gsb.modele.dao.LocaliteDao;
-import gsb.modele.dao.VisiteurDao;
+import gsb.service.VisiteurService;
 
 /**
  * @author Isabelle
@@ -84,7 +84,7 @@ public class JIFVisiteurFiche extends JIFVisiteur implements ActionListener{
             	uneLoc = LocaliteDao.rechercher(codePostal);
             }
             Visiteur visiteur = new Visiteur(matricule, nom, prenom,login,mdp, adresse, uneLoc, "", sqlDate, prime, codeUnite, nomUnite);
-            int result = VisiteurDao.modifier(matricule,visiteur);
+            int result = VisiteurService.modifierVisiteur(matricule,visiteur);
             
             if (result != 0) {
                 JOptionPane.showMessageDialog(this, "Visiteur modifié avec succès !");
@@ -92,7 +92,7 @@ public class JIFVisiteurFiche extends JIFVisiteur implements ActionListener{
                 JOptionPane.showMessageDialog(this, "Échec lors de la modification du visiteur");
             }
             // Videz les champs de texte après l'ajout
-            viderText();
+            
 			
 		}
 	}

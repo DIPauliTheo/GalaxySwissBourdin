@@ -1,75 +1,122 @@
 package gsb.service;
 
 import gsb.modele.dao.VisiteurDao;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import gsb.modele.Visiteur;
 
 public class VisiteurService {
 
 	
-	
+	/**
+	 * Recherche un visiteur dans la base de données par son matricule.
+	 * 
+	 * @param matricule Le matricule du visiteur à rechercher.
+	 * @return Une instance de la classe Visiteur correspondant au visiteur trouvé.
+	 * @throws IllegalArgumentException Si le matricule du visiteur est invalide.
+	 */
 	
 	public static Visiteur rechercherVisiteur(String matricule) {
 		Visiteur unVisiteur = VisiteurDao.rechercher(matricule);
-		if (!isValidMatricule(unVisiteur.getMatricule())) {
-	        throw new IllegalArgumentException("Matricule invalide");
+		if (unVisiteur == null || !isValidMatricule(unVisiteur.getMatricule())) {
+	        return null;
 	    }
         return VisiteurDao.rechercher(matricule);
     }
 	
+	/**
+	 * Crée un nouveau visiteur dans la base de données.
+	 * 
+	 * @param visiteur Un objet Visiteur contenant les informations du nouveau visiteur.
+	 * @return Le nombre de lignes affectées dans la base de données.
+	 */
+	
 	public static int creerVisiteur(Visiteur visiteur) {
-        
-		if (!isValidTelephone(visiteur.getTelephone())) {
-	        throw new IllegalArgumentException("Numéro de téléphone invalide");
-	    }
-	    if (!isValidMatricule(visiteur.getMatricule())) {
-	        throw new IllegalArgumentException("Matricule invalide");
-	    }
-	    if (!isValidCp(visiteur.getUneLocalite().getCodePostal())) {
-	        throw new IllegalArgumentException("Code postal invalide");
-	    }
-	    if (!isValidCodeUnit(visiteur.getCodeUnite())) {
-	        throw new IllegalArgumentException("Code unité invalide");
-	    }
-	    
+		
+		
+
+		    // Effectuer les validations restantes
+		if (!isValidMatricule(visiteur.getMatricule()) ||
+		    !isValidCp(visiteur.getUneLocalite().getCodePostal()) ||
+		    !isValidCodeUnit(visiteur.getCodeUnite()) ||
+	        !isValidDateFormat(visiteur.getDateEntree())) {
+
+	        return 0; // Indiquer un échec dans la création du visiteur
+		}
+
         return VisiteurDao.creer(visiteur);
     }
 	
+	/**
+	 * Modifie un visiteur dans la base de données.
+	 * 
+	 * @param matricule Le matricule du visiteur à modifier.
+	 * @param visiteur Un objet Visiteur contenant les nouvelles informations du visiteur.
+	 * @return Le nombre de lignes affectées dans la base de données.
+	 */
+	
 	public static int modifierVisiteur(String matricule, Visiteur visiteur) {
-        
-		if (!isValidTelephone(visiteur.getTelephone())) {
-	        throw new IllegalArgumentException("Numéro de téléphone invalide");
-	    }
-	    if (!isValidMatricule(visiteur.getMatricule())) {
-	        throw new IllegalArgumentException("Matricule invalide");
-	    }
-	    if (!isValidCp(visiteur.getUneLocalite().getCodePostal())) {
-	        throw new IllegalArgumentException("Code postal invalide");
-	    }
-	    if (!isValidCodeUnit(visiteur.getCodeUnite())) {
-	        throw new IllegalArgumentException("Code unité invalide");
+	    if (!isValidMatricule(visiteur.getMatricule()) || 
+	        !isValidCp(visiteur.getUneLocalite().getCodePostal()) || 
+	        !isValidCodeUnit(visiteur.getCodeUnite())) {
+	        return 0;
 	    }
 	    
-        return VisiteurDao.modifier(matricule,visiteur);
-    }
-	
-	
-	private static boolean isValidTelephone(String telephone) {
-	    String phoneNumberPattern = "\\d{2}-\\d{2}-\\d{2}-\\d{2}-\\d{2}";
-	    return telephone.matches(phoneNumberPattern);
+	    return VisiteurDao.modifier(matricule, visiteur);
 	}
+	
+	/**
+	 * Vérifie la validité du matricule du visiteur en utilisant une expression régulière.
+	 * 
+	 * @param matricule Le matricule du visiteur à vérifier.
+	 * @return true si le matricule du visiteur est valide, sinon false.
+	 */
 	
 	private static boolean isValidMatricule(String matriule) {
 		String matriculePattern = "[a-z]\\d{2,3}";
 	    return matriule.matches(matriculePattern);
 	}
 	
+	/**
+	 * Vérifie la validité du code postal en utilisant une expression régulière.
+	 * 
+	 * @param cp Le code postal à vérifier.
+	 * @return true si le code postal est valide, sinon false.
+	 */
+	
 	private static boolean isValidCp(String cp) {
 		String cpPattern = "\\d{5}";
 	    return cp.matches(cpPattern);
 	}
 	
+	/**
+	 * Vérifie la validité du code unité en utilisant une expression régulière.
+	 * 
+	 * @param codeUnit Le code unité à vérifier.
+	 * @return true si le code unité est valide, sinon false.
+	 */
+	
 	private static boolean isValidCodeUnit(String codeUnit) {
 		String codeUnitPattern = "[A-Z]{2,4}";
 	    return codeUnit.matches(codeUnitPattern);
 	}
+	
+	private static boolean isValidDateFormat(Date date) {
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	    dateFormat.setLenient(false); // Désactive la tolérance pour les dates invalides
+
+	    try {
+	        // Formatte la date en une chaîne selon le format spécifié
+	        String formattedDate = dateFormat.format(date);
+	        
+	        // Compare la chaîne formatée avec la date originale
+	        return formattedDate.equals(dateFormat.format(date));
+	    } catch (Exception e) {
+	        return false; // Erreur lors du formatage, la date n'est pas dans le bon format
+	    }
+	}
+	
+	
 }

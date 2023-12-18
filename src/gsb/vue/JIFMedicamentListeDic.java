@@ -1,13 +1,9 @@
-/*
- * Cr�� le 23 f�vr. 2015
- *
- * TODO Pour changer le mod�le de ce fichier g�n�r�, allez � :
- * Fen�tre - Pr�f�rences - Java - Style de code - Mod�les de code
- */
 package gsb.vue;
 
 import gsb.modele.Medecin;
+import gsb.modele.Medicament;
 import gsb.modele.dao.MedecinDao;
+import gsb.modele.dao.MedicamentDao;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -33,31 +29,31 @@ import javax.swing.event.ListSelectionListener;
  *         code - Mod�les de code
  */
 @SuppressWarnings("unused")
-public class JIFMedecinListeDic extends JInternalFrame implements ActionListener {
+public class JIFMedicamentListeDic extends JInternalFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
 	//private ArrayList<Medecin> lesMedecins;
-	private HashMap<String,Medecin> diccoMedecin;
+	private HashMap<String,Medicament> dicoMedicament;
 
 
 	protected JPanel p;
 	protected JScrollPane scrollPane;
 	protected JPanel pSaisie;
-	protected JTextField JTcodeMedecin;
+	protected JTextField JTcodeMedicament;
 	protected JButton JBafficherFiche;
 	protected MenuPrincipal fenetreContainer;
 	protected JTable table;
 
-	public JIFMedecinListeDic(MenuPrincipal uneFenetreContainer) {
+	public JIFMedicamentListeDic(MenuPrincipal uneFenetreContainer) {
 
 		fenetreContainer = uneFenetreContainer;
 		// r�cup�ration des donn�es Medecin dans la collection
 		//lesMedecins = MedecinDao.retournerCollectionDesMedecins();
 
 		//int nbLignes = lesMedecins.size();
-		diccoMedecin = MedecinDao.retournerDictionnaireDesMedecins();
-		int nbLignes= diccoMedecin.size();
+		dicoMedicament = MedicamentDao.retournerDictionnaireDesMedicaments();
+		int nbLignes= dicoMedicament.size();
 		
 		p = new JPanel(); // panneau principal de la fen�tre
 
@@ -65,14 +61,14 @@ public class JIFMedecinListeDic extends JInternalFrame implements ActionListener
 		String[][] data = new String[nbLignes][4] ;
 		//for(Medecin unMedecin : lesMedecins){
 		
-		for (Map.Entry<String,Medecin> uneEntree : diccoMedecin.entrySet()){
-			data[i][0] = uneEntree.getValue().getCodeMed();
-			data[i][1] = uneEntree.getValue().getNom();
-			data[i][2] = uneEntree.getValue().getPrenom();
-			data[i][3] = uneEntree.getValue().getLaLocalite().getVille() ;
+		for (Map.Entry<String,Medicament> uneEntree : dicoMedicament.entrySet()){
+			data[i][0] = uneEntree.getValue().getDepotLegal();
+			data[i][1] = uneEntree.getValue().getNomCommercial();
+			data[i][2] = uneEntree.getValue().getContreIndication();
+			data[i][3] = uneEntree.getValue().getEffets();
 			i++;
 			}
-		String[] columnNames = {"Code", "Nom","Prenom","Ville"};
+		String[] columnNames = {"Code", "Nom","Conre Indication","Effets"};
 		table = new JTable(data, columnNames);
 		table.getSelectionModel().addListSelectionListener(table);
 		
@@ -81,11 +77,11 @@ public class JIFMedecinListeDic extends JInternalFrame implements ActionListener
 		p.add(scrollPane);
 		
 		pSaisie = new JPanel();
-		JTcodeMedecin = new JTextField(20);
-		JTcodeMedecin.setMaximumSize(JTcodeMedecin.getPreferredSize());
-		JBafficherFiche = new JButton("Afficher Fiche médecin");
+		JTcodeMedicament = new JTextField(20);
+		JTcodeMedicament.setMaximumSize(JTcodeMedicament.getPreferredSize());
+		JBafficherFiche = new JButton("Afficher Fiche médicament");
 		JBafficherFiche.addActionListener(this); // source d'�venement
-		pSaisie.add(JTcodeMedecin);
+		pSaisie.add(JTcodeMedicament);
 		pSaisie.add(JBafficherFiche);
 		p.add(pSaisie);
 		
@@ -101,13 +97,13 @@ public class JIFMedecinListeDic extends JInternalFrame implements ActionListener
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
    		if (source == JBafficherFiche){
-   			if (diccoMedecin.containsKey(JTcodeMedecin.getText())){
-   	   			Medecin unMedecin = diccoMedecin.get(JTcodeMedecin.getText());
-   	   			fenetreContainer.ouvrirFenetre(new JIFMedecinFiche(unMedecin));
+   			if (dicoMedicament.containsKey(JTcodeMedicament.getText())){
+   	   			Medicament unMedicament = dicoMedicament.get(JTcodeMedicament.getText());
+   	   			fenetreContainer.ouvrirFenetre(new JIFMedicamentFiche(unMedicament));
    			}
    		}
    		if(source == table){
-   			JTcodeMedecin.setText((String)table.getValueAt(table.getSelectedRow(), table.getSelectedColumn()));
+   			JTcodeMedicament.setText((String)table.getValueAt(table.getSelectedRow(), table.getSelectedColumn()));
    			
    		}
 	}

@@ -29,10 +29,10 @@ public class ConnexionMySql { // DAO = Data Access Object
 	public static void connecterBd(){
 		//connexion � la base de donn�e � partir de jdbc
 		//String url = "jdbc:mysql://192.168.60.102:3306/secolog"; // url : chaine de connexion
-		String url = "jdbc:mysql://localhost/gsb_java"; // url : chaine de connexion
+		String url = "jdbc:mysql://192.175.1.12/gsb_java"; // url : chaine de connexion
 		// try permet d'essayer de lancer la connexion
 		try {Class.forName("com.mysql.cj.jdbc.Driver"); 
-			cnx = DriverManager.getConnection(url,"root",""); 
+			cnx = DriverManager.getConnection(url,"devtheo","password"); 
 		} 
 		// si la connexion echoue un message d'erreur est affich�
         catch(Exception e) {  System.out.println("Echec lors de la connexion");  } 

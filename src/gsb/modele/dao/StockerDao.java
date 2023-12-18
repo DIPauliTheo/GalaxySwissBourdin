@@ -7,6 +7,14 @@ import gsb.modele.Stocker;
 import gsb.modele.Visiteur;
 
 public class StockerDao {
+	
+	/**
+	 * Recherche un stock dans la base de données par son CodeSto.
+	 * 
+	 * @param CodeSto Le code du stock à rechercher.
+	 * @return Une instance de la classe Stocker correspondant au stock trouvé, ou null si non trouvé.
+	 */
+	
 	public static Stocker rechercher(String CodeSto){
 		Stocker unStock =null;
 		Medicament unMedicament = null;
