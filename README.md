@@ -56,9 +56,6 @@ Avant d'utiliser l'application, assurez-vous de suivre ces étapes pour une inst
 
 Suivez les instructions fournies dans l'application pour ajouter, afficher ou modifier des informations sur les visites médicales, les médecins et les médicaments.
 
-## Licence
-
-Ce projet est sous licence [MIT](LICENSE).
 
 ## Remerciements
 
