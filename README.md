@@ -1,6 +1,6 @@
 # Galaxy Swiss Bourdin - Projet BTS SIO
 
-![Logo de Galaxy Swiss Bourdin]([https://example.com/logo.png](https://www.google.com/url?sa=i&url=https%3A%2F%2Fportfoliosalome.boostezvotreenfant.com%2Fgsb-appli-frais%2F&psig=AOvVaw2rHtZ_Q915-4dQ3dUBNoUQ&ust=1703180072311000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCPiW7KrGnoMDFQAAAAAdAAAAABAE))
+![Logo de Galaxy Swiss Bourdin](https://portfoliosalome.boostezvotreenfant.com/wp-content/uploads/2021/03/unnamed.png))
 
 **Galaxy Swiss Bourdin** est un projet développé dans le cadre d'un BTS SIO (Services Informatiques aux Organisations). Réalisé en collaboration avec Enzo Danigo, ce projet consiste en une application Java permettant de gérer les informations liées aux visites médicales, médecins et médicaments pour l'entreprise fictive Galaxy Swiss Bourdin.
 
